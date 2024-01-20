@@ -14,12 +14,13 @@ async function handleAdminLogin(req, res) {
 
     if (!user) {
       // If the user is not found, render the login form with an error message
-      return res.render('admin/login', { error: 'Invalid email or password' });
+      return res.status(401).render('admin/login', { error: 'Invalid email or password' });
     }
+    
     const sessionId = uuidv4();
     setAdmin (sessionId,user)
     res.cookie("uid",sessionId)
-    res.render('admin/index')
+    res.status(200).render('admin/index')
 
   } catch (error) {
     // Handle any errors that might occur during the database query
