@@ -4,4 +4,8 @@ const router = express.Router()
 
 
 router.get('/',adminControler.showLoginForm)
+router.post('/',adminControler.handleAdminLogin)
+
+
+
 module.exports = router

@@ -1,22 +1,27 @@
-const mongoose = require ('mongoose')
-mongoose.connect('mongodb://localhost:27017/your-database', { useNewUrlParser: true, useUnifiedTopology: true })
-    // .then(() => {
-    //     app.listen(PORT, () => {
-    //         console.log(`Server is running on http://localhost:${PORT}`);
-    //     });
-    // })
-    // .catch(error => console.error('Error connecting to MongoDB:', error));
+const mongoose = require("mongoose");
 
-const adminSchema = new mongoose.Schema({
-name:{
-    type:String,
-    required: true
-},password:{
-    type:String,
-    required: true
+try{
+  const userSchema = new mongoose.Schema(
+    {
+      
+      email: {
+        type: String,
+        required: true,
+        unique: true,
+      },
+      password: {
+        type: String,
+        required: true,
+      },
+    },
+    { timestamps: true }
+  );
+const User = mongoose.model("user", userSchema);
+module.exports = User;
+
+}
+catch (error) {
+  console.error('Error during admin login:', error);
+  return res.status(500).send('Internal Server Error');
 }
 
-},{timestamps:true});
-
-const user = mongoose.model("admin",adminSchema)
-module.exports = user

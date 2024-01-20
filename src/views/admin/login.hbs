@@ -158,16 +158,23 @@
     <header>
       <h4>Login</h4>
     </header>
-    <form>
+    <form action="adminLogin" method="post">
       <div class="form_wrapper">
-        <input id="input" type="text" required>
+        <input id="name" type="text" name="name" >
         <label for="input">Username</label>
         <i class="material-icons">person</i>
       </div>
+       
       <div class="form_wrapper">
-        <input id="password" type="password" required>
-        <label for="password">Password</label>
+        <input id="email" type="password" name="email" >
+        <label for="password">Email</label>
         <i class="material-icons">lock</i>
+      </div>
+      
+      <div class="form_wrapper">
+        <input id="password" type="password" name="password" >
+        <label for="password">Password</label>
+        <i class="material-icons">email</i>
       </div>
       <div class="remember_box">
         <div class="remember">
@@ -176,7 +183,7 @@
         </div>
         <a href="#">Forgot Password ?</a>
       </div>
-      <button>Login</button>
+      <button type="submit">Login</button>
       <div class="new_account">
         Don't have an account? <a href="#">Sign up</a>
       </div>
