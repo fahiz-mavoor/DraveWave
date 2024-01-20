@@ -1,9 +1,18 @@
 const express = require ('express')
 const bodyParser = require('body-parser')
 const adminRout = require('../src/routes/admin')
+const {connectToMongoDb} = require('../config/connect')
 const hbs = require ('hbs')
 const PORT = process.env.PORT||4000
 
+const mongoUrl = 'mongodb://localhost:27017/';
+connectToMongoDb(mongoUrl)
+    .then(() => {
+        console.log('Connected to MongoDB');
+    })
+    .catch(error => {
+        console.error('Error connecting to MongoDB:', error.message);
+    });
 
 const app = express()
 
