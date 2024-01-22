@@ -1,5 +1,6 @@
-const express = require ('express')
+const express = require('express')
 const bodyParser = require('body-parser')
+const session = require('express-session');
 const adminRout = require('../src/routes/admin')
 const {connectToMongoDb} = require('../config/connect')
 const hbs = require ('hbs')
@@ -26,12 +27,24 @@ app.set('views','./src/views')
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieparser())
+app.use(
+    session({
+      secret: 'fahiz-123',
+      resave: false,
+      saveUninitialized: true,
+    })
+  );
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/',adminRout)
 app.use('/adminLogin',adminRout)
 app.use('/adminDashbord',restrictToLoginAdminOnley,adminRout)
+app.use('/otp',adminRout)
+app.use('/getOtp',adminRout)
+app.use('/generateOtp',adminRout)
+
+
 
 
 

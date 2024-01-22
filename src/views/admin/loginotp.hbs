@@ -56,6 +56,13 @@
       flex-direction: column;
       gap: 20px;
     }
+     .error-message {
+      /* Center text vertically */
+      display: flex;
+      align-items: center;
+  margin-left: 20px;
+      color: white;         
+    }
 
     input[type="text"],
     input[type="password"] {
@@ -161,7 +168,7 @@
     </header>
     <br>
     <br>
-    <form action="adminLogin"  method="post">
+    <form action="otp"  method="post">
       {{!-- <div class="form_wrapper">
         <input id="name" type="text" name="name" >
         <label for="input">Username</label>
@@ -169,23 +176,32 @@
       </div> --}}
        
       <div class="form_wrapper">
-        <input id="email" type="password" name="email" >
-        <label for="password">Email</label>
+        <input id="otp" type="password" name="otp" >
+        <label for="password">Enter Otp</label>
         <i class="material-icons">lock</i>
       </div>
       
-      <div class="form_wrapper">
+        {{#if error}}
+    <div class="error-message">
+      {{error}}
+    </div>
+  {{/if}}
+      {{!-- <div class="form_wrapper">
         <input id="password" type="password" name="password" >
         <label for="password">Password</label>
         <i class="material-icons">email</i>
-      </div>
+      </div> --}}
       <div id="error-message"></div>
      
-      <button type="submit" onclick="return validateForm()">Login</button>
-    </form>
+      <button type="submit" onclick="">Login</button>
+      
+       <div class="new_account">
+        Login? <a href="adminLogin">login</a>
+      </div>
+    {{!-- </form>
     <form action="getOtp" method="post">
-            <button class="mt-2"  type="submit">Get Otp</button>
-      </form>
+            <button class="mt-2" type="submit">Get Otp</button>
+      </form> --}}
   </main>
 </body>
     <script>
@@ -195,23 +211,20 @@
       error.innerHTML = '';
 
       // Get values from the form
-      var email = document.getElementById('email').value;
-      var password = document.getElementById('password').value;
+      var phone = document.getElementById('phone').value;
+      {{!-- var password = document.getElementById('password').value; --}}
 
       // Regular expression for a valid email format
-      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phoneNumberRegex = /^\d{10}$/
 
       // Check if email is valid
-      if (!emailRegex.test(email)) {
-        error.innerHTML = 'Please enter a valid email address.';
+      if (!phoneNumberRegex.test(phone)) {
+        error.innerHTML = 'Please enter a valid phone number';
         return false;
       }
 
       // Check if the password is at least 8 characters long
-      if (password.length < 8) {
-        error.innerHTML = 'Password must be at least 8 characters long.';
-        return false;
-      }
+     
 
       // If everything is valid, the form will be submitted
       return true;

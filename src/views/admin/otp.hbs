@@ -161,7 +161,7 @@
     </header>
     <br>
     <br>
-    <form action="adminLogin"  method="post">
+    <form action="generateOtp"  method="post">
       {{!-- <div class="form_wrapper">
         <input id="name" type="text" name="name" >
         <label for="input">Username</label>
@@ -169,23 +169,27 @@
       </div> --}}
        
       <div class="form_wrapper">
-        <input id="email" type="password" name="email" >
+    <input id="email" type="text" name="email">
         <label for="password">Email</label>
-        <i class="material-icons">lock</i>
+        <i class="material-icons">email</i>
       </div>
       
-      <div class="form_wrapper">
+      {{!-- <div class="form_wrapper">
         <input id="password" type="password" name="password" >
         <label for="password">Password</label>
         <i class="material-icons">email</i>
-      </div>
-      <div id="error-message"></div>
+      </div> --}}
+      <div style="color: white;" id="error-message"></div>
      
-      <button type="submit" onclick="return validateForm()">Login</button>
-    </form>
+      <button type="submit" onclick="return validateForm()">Get Otp</button>
+      
+       <div class="new_account">
+        Login? <a href="adminLogin">login</a>
+      </div>
+    {{!-- </form>
     <form action="getOtp" method="post">
-            <button class="mt-2"  type="submit">Get Otp</button>
-      </form>
+            <button class="mt-2" type="submit">Get Otp</button>
+      </form> --}}
   </main>
 </body>
     <script>
@@ -196,22 +200,19 @@
 
       // Get values from the form
       var email = document.getElementById('email').value;
-      var password = document.getElementById('password').value;
+      {{!-- var password = document.getElementById('password').value; --}}
 
       // Regular expression for a valid email format
-      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       // Check if email is valid
       if (!emailRegex.test(email)) {
-        error.innerHTML = 'Please enter a valid email address.';
+        error.innerHTML = 'Please enter a valid email ';
         return false;
       }
 
       // Check if the password is at least 8 characters long
-      if (password.length < 8) {
-        error.innerHTML = 'Password must be at least 8 characters long.';
-        return false;
-      }
+     
 
       // If everything is valid, the form will be submitted
       return true;
