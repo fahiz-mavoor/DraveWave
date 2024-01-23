@@ -4,8 +4,10 @@ const admin = require('../model/admin');
 const  {setAdmin} =require('../service/auth');
 const session = require('express-session');
 const { v4: uuidv4 } = require('uuid');
+const { addCars } = require('../model/addCar');
 const bcrypt =require('bcrypt') ;
 const { sendAdminOtp ,generateOtp } = require('../service/adminotpsms');
+const{upload ,uploadFile} = require('./fileUpload')
 
 const emailOtps = {};
 
@@ -87,8 +89,10 @@ async function handleAdminLogin(req, res) {
 };
 
 
- function viewCarsAdmin(req,res){
-  res.status(200).render('admin/admindashbord/adminCar')
+  async function viewCarsAdmin(req,res){
+  const cars = await readAdminDashbord()
+
+  res.status(200).render('admin/admindashbord/adminCar',{data:cars})
 }
 
 
@@ -99,10 +103,13 @@ function viewHomeAdmin(req,res){
   // sendAdminOtp();
 
 
-  const { addCars } = require('../model/addCar');
 
   async function addCarAdmin(req, res) {
       try {
+        upload.single(req.carImage)
+        uploadFile()
+
+
           const {
               carName,
               charCatogory,
@@ -121,7 +128,7 @@ function viewHomeAdmin(req,res){
               description
           } = req.body;
   
-          // Create a new car instance using the car model
+          // // Create a new car instance using the car model
           const newCar = new addCars({
               carName,
               charCatogory,
@@ -158,7 +165,12 @@ function viewHomeAdmin(req,res){
   };
 
   async function readAdminDashbord (req,res){
-    
+    const cars = await addCars.find()
+    // console.log(cars);
+    // res.send(cars)
+    // const allDataArray = await cars.toArray();
+
+    return cars
   }
   
 
@@ -172,5 +184,6 @@ module.exports = {
   viewCarsAdmin,
   viewHomeAdmin,
   addCarAdmin,
+  readAdminDashbord
   
 };

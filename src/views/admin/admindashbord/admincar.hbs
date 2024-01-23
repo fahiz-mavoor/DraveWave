@@ -723,7 +723,7 @@ body {
 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-					<form action="/addCars" method="post">
+					<form action="/addCars" method="post" enctype="multypart/form-dat">
 
                     <div class="modal-content">
                     <div class="modal-header">
@@ -867,7 +867,8 @@ body {
 					<table>
 						<thead>
 							<tr>
-								<th>Car Name</th>
+								
+									<th>Car Name</th>
 								<th>Car Model</th>
 								<th>Transmission</th>
 								<th>Year</th>
@@ -875,15 +876,23 @@ body {
 							</tr>
 						</thead>
 						<tbody>
+								{{#each data}}
+
 							<tr>
+								 {{!-- <td>
+            <img src="data:image/png;base64,{{this.carImage.buffer.toString('base64')}}" alt="Car Image" width="100">
+          </td> --}}
 								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
+
+									<p>{{this.carName}}</p>
 								</td>
-								<td>01-10-2021</td>
-								<td>Petrol</td>
-								<td> 2010</td>
+								<td>{{this.carModel}}</td>
+								<td>{{this.TransmitionType}}</td>
+								<td> {{this.year}}</td>
+
 							</tr>
+								{{/each}}
+
 						</tbody>
 					</table>
 				</div>
