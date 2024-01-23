@@ -59,11 +59,11 @@ try{
     },
     feathers:{
       type: Array,
-      required: true,
+      required: false,
     },
     description:{
       type: Array,
-      required: true,
+      required: false,
 
     },
    },
@@ -76,5 +76,5 @@ try{
   
 }catch(error){
   console.error('Error during admin login:', error);
-  // return res.status(500).send('Internal Server Error');
+  return res.status(500).send('Internal Server Error');
 }

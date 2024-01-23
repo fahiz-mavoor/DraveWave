@@ -3,7 +3,7 @@ async function restrictToLoginAdminOnley(req,res,next){
 
     const adminId = req.cookie?.uid
 
-    if(!adminId){
+    if(adminId){
         return  res.redirect('/')
         const admin = getAdmin(adminId)
         if(!admin){

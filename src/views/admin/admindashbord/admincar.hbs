@@ -612,7 +612,7 @@ body {
 			<i class='bx bxs-smile'></i>
 			<span class="text">AdminHub</span>
 		</a>
-		<ul class="side-menu top">
+		<ul class="side-menu top" style="margin-left: 0rem;padding:0">
 			<li >
 				<a href="adminHome">
 					<i class='bx bxs-dashboard' ></i>
@@ -650,7 +650,7 @@ body {
 				</a>
 			</li>
 		</ul>
-		<ul class="side-menu">
+		<ul class="side-menu" style="margin-left: 0rem;padding:0">
 			<li>
 				<a href="#">
 					<i class='bx bxs-cog' ></i>
@@ -733,12 +733,12 @@ body {
                     <div class="modal-body">
                          <div class="input-group flex-nowrap mt-2">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-car'></i></span>
-                            <input type="text" class="form-control" name="carName" placeholder="Car Name" aria-label="Username" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control" name="carName" placeholder="Car Name" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             </div>
                              <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-car'></i></span>
-                            <input type="text" class="form-control"  name="charCatogory"  placeholder="Car Catogory" aria-label="Username" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control"  name="charCatogory"  placeholder="Car Catogory" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             </div>
                               <div class="input-group flex-nowrap mt-3 ">
@@ -746,38 +746,38 @@ body {
                             <input type="text" class="form-control" placeholder="Year" name="year" aria-label="Username" aria-describedby="addon-wrapping">
                             
                              <span class="input-group-text ms-3" id="addon-wrapping"><i class='bx bxs-purchase-tag' ></i></span>
-                            <input type="text" class="form-control" name="dayRent" placeholder="Rent Per Day" aria-label="Username" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control" name="dayRent" placeholder="Rent Per Day" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             </div>
                              <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"></i></span>
-                            <input type="text" class="form-control" name="brandName" placeholder="Brand" aria-label="Username" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control" name="brandName" placeholder="Brand" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             </div>
                               <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"></i></span>
-                            <input type="text" class="form-control" name="carModal" placeholder="Car Model" aria-label="Username" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control" name="carModal" placeholder="Car Model" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             </div>
                               <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"></i></span>
-                            <input type="text" class="form-control" name="licencePlateNumber" placeholder="Licence Plate number" aria-label="Username" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control" name="licencePlateNumber" placeholder="Licence Plate number" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             </div>
                              <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-image-add' ></i></span>
-                            <input type="file" class="form-control" name="carImage" id="imageUpload" accept="image/*" aria-describedby="addon-wrapping">
+                            <input type="file" class="form-control" name="carImage" id="imageUpload" accept="image/*" aria-describedby="addon-wrapping" required>
                             
                             </div>
                                <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-paint-roll'></i></span>
-                            <input type="text" class="form-control" name="colour" placeholder="Colour" aria-label="Username" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control" name="colour" placeholder="Colour" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             <select class="form-select ms-2" name="fuelType" id="inputGroupSelect02">
                                 <option selected>Fuel Type</option>
-                                <option value="1">Petrol</option>
-                                <option value="2">Desel</option>
-                                <option value="2">Other</option>
+                                <option value="Petrol">Petrol</option>
+                                <option value="Desel">Desel</option>
+                                <option value="Electric">Other</option>
 
                             </select>
                             <label class="input-group-text" for="inputGroupSelect02">Options</label>
@@ -786,10 +786,10 @@ body {
                             {{!-- <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-image-add' ></i></span>
                             <input type="file" class="form-control" id="imageUpload" accept="image/*" aria-describedby="addon-wrapping">
                              --}}
-                             <select class="form-select  ms-2" name="TransmitionType" id="inputGroupSelect02">
+                             <select class="form-select  ms-2" name="TransmitionType" id="inputGroupSelect02" required>
                                 <option selected>Transmission Type</option>
-                                <option value="1">Manual</option>
-                                <option value="2">automatic</option>
+                                <option value="Manual">Manual</option>
+                                <option value="Automatic">Automatic</option>
 
                             </select>
                             <label class="input-group-text" for="inputGroupSelect02">Options</label>
@@ -797,21 +797,21 @@ body {
 
                                                           <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-bookmarks'></i></span>
-                            <input type="text" class="form-control" name="milage" placeholder="Milage" aria-label="Username" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control" name="milage" placeholder="Milage" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                              <span class="input-group-text ms-2" id="addon-wrapping"><i class='bx bxs-bookmarks'></i></span>
-                            <input type="date" class="form-control" name="insurenceDate" placeholder="Insurence " aria-label="Username" aria-describedby="addon-wrapping">
+                            <input type="date" class="form-control" name="insurenceDate" placeholder="Insurence " aria-label="Username" aria-describedby="addon-wrapping"required>
                             
                             
                             </div>
 
                             <div class="input-group mt-3">
                                 <span class="input-group-text">Feathers</span>
-                                <textarea class="form-control" name="feathers" aria-label="With textarea"></textarea>
+                                <textarea class="form-control" name="feathers" aria-label="With textarea" ></textarea>
                             </div>
                                <div class="input-group mt-3">
                                 <span class="input-group-text">Description</span>
-                                <textarea class="form-control" name="description" aria-label="With textarea"></textarea>
+                                <textarea class="form-control" name="description" aria-label="With textarea" ></textarea>
                             </div>
                             
 
@@ -867,9 +867,11 @@ body {
 					<table>
 						<thead>
 							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
+								<th>Car Name</th>
+								<th>Car Model</th>
+								<th>Transmission</th>
+								<th>Year</th>
+
 							</tr>
 						</thead>
 						<tbody>
@@ -879,44 +881,13 @@ body {
 									<p>John Doe</p>
 								</td>
 								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
+								<td>Petrol</td>
+								<td> 2010</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<div class="todo">
+				{{!-- <div class="todo">
 					<div class="head">
 						<h3>Todos</h3>
 						<i class='bx bx-plus' ></i>
@@ -944,7 +915,7 @@ body {
 							<i class='bx bx-dots-vertical-rounded' ></i>
 						</li>
 					</ul>
-				</div>
+				</div> --}}
 			</div>
 		</main>
 		<!-- MAIN -->

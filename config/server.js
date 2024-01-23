@@ -37,6 +37,9 @@ app.use(
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/adminLogin',restrictToLoginAdminOnley,adminRout)
+app.use('/addCars',restrictToLoginAdminOnley,adminRout)
+
 app.use('/',adminRout)
 app.use('/adminLogin',adminRout)
 app.use('/adminDashbord',restrictToLoginAdminOnley,adminRout)
@@ -45,8 +48,9 @@ app.use('/getOtp',adminRout)
 app.use('/generateOtp',adminRout)
 
 app.use('/adminCars',restrictToLoginAdminOnley,adminRout)
-app.use('/adminHome',restrictToLoginAdminOnley,adminRout)
-app.use('/addCars',restrictToLoginAdminOnley,adminRout)
+
+
+
 
 
 

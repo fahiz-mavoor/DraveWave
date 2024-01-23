@@ -156,6 +156,10 @@ function viewHomeAdmin(req,res){
       // ... other functions
       addCarAdmin,
   };
+
+  async function readAdminDashbord (req,res){
+    
+  }
   
 
 
