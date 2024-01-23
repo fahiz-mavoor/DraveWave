@@ -34,7 +34,7 @@ try{
       unique:true
     },
     carImage:{
-      type: Buffer, 
+      type: String, 
       required: true,
     },
     colour:{
@@ -70,6 +70,7 @@ try{
    { timestamps: true }
   
    )
+
     const Car =mongoose.model("Cars",carScheema)
     module.exports={ addCars: Car}
 

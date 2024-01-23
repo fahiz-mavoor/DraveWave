@@ -8,6 +8,7 @@ const { addCars } = require('../model/addCar');
 const bcrypt =require('bcrypt') ;
 const { sendAdminOtp ,generateOtp } = require('../service/adminotpsms');
 const{upload ,uploadFile} = require('./fileUpload')
+const path =require('path')
 
 const emailOtps = {};
 
@@ -100,65 +101,127 @@ function viewHomeAdmin(req,res){
   res.status(200).render('admin/index')
 }
 
-  // sendAdminOtp();
 
 
 
+  // async function addCarAdmin(req, res) {
+  //     try {
+        
+
+  //         const {
+  //             carName,
+  //             charCatogory,
+  //             year,
+  //             dayRent,
+  //             brandName,
+  //             carModal,
+  //             licencePlateNumber,
+  //             carImage,
+  //             colour,
+  //             fuelType,
+  //             TransmitionType,
+  //             milage,
+  //             insurenceDate,
+  //             feathers,
+  //             description
+  //         } = req.body;
+  //         console.log(carImage);
+         
+  //         // // Create a new car instance using the car model
+  //         const newCar = new addCars({
+  //             carName,
+  //             charCatogory,
+  //             year,
+  //             dayRent,
+  //             brandName,
+  //             carModal,
+  //             licencePlateNumber,
+  //             colour,
+  //             fuelType,
+  //             TransmitionType,
+  //             milage,
+  //             insurenceDate,
+  //             feathers,
+  //             description
+  //         });
+          
+  //         newCar.carImage = req.file.path;
+
+  //         // Save the new car to the database
+  //         await newCar.save();
+  //         uploadFile(req, res);
+
+  //         // Respond with a success message
+  //         res.status(201).render('admin/index')
+  //     } catch (error) {
+  //         // Handle any errors that might occur during the database operation
+  //         console.error('Error adding car:', error);
+  //         res.status(500).send('Internal Server Error');
+  //     }
+  // }
+  
   async function addCarAdmin(req, res) {
-      try {
-        upload.single(req.carImage)
-        uploadFile()
+    try {
+        const {
+            carName,
+            charCatogory,
+            year,
+            dayRent,
+            brandName,
+            carModal,
+            licencePlateNumber,
+            colour,
+            fuelType,
+            TransmitionType,
+            milage,
+            insurenceDate,
+            feathers,
+            description
+        } = req.body;
+        console.log(req.file);
+        // Check if req.file is defined and has a path property
+        if (req.file && req.file.path) {
+            // Create a new car instance using the car model
+            const newCar = new addCars({
+                carName,
+                charCatogory,
+                year,
+                dayRent,
+                brandName,
+                carModal,
+                licencePlateNumber,
+                colour,
+                fuelType,
+                TransmitionType,
+                milage,
+                insurenceDate,
+                feathers,
+                description
+            });
+            console.log('req.file:', req.file);
 
+            // Set the carImage property to the file path
+            newCar.carImage = req.file.path;
 
-          const {
-              carName,
-              charCatogory,
-              year,
-              dayRent,
-              brandName,
-              carModal,
-              licencePlateNumber,
-              carImage,
-              colour,
-              fuelType,
-              TransmitionType,
-              milage,
-              insurenceDate,
-              feathers,
-              description
-          } = req.body;
-  
-          // // Create a new car instance using the car model
-          const newCar = new addCars({
-              carName,
-              charCatogory,
-              year,
-              dayRent,
-              brandName,
-              carModal,
-              licencePlateNumber,
-              carImage,
-              colour,
-              fuelType,
-              TransmitionType,
-              milage,
-              insurenceDate,
-              feathers,
-              description
-          });
-  
-          // Save the new car to the database
-          await newCar.save();
-  
-          // Respond with a success message
-          res.status(201).render('admin/index')
-      } catch (error) {
-          // Handle any errors that might occur during the database operation
-          console.error('Error adding car:', error);
-          res.status(500).send('Internal Server Error');
-      }
-  }
-  
+            // Save the new car to the database
+            await newCar.save();
+
+            // Handle the success or failure of the file upload
+            uploadFile(req, res);
+        } else {
+            // Handle the case when req.file or req.file.path is undefined
+            console.error('Error: File or file path is undefined');
+            res.status(400).send('Bad Request');
+        }
+    } catch (error) {
+        // Handle any errors that might occur during the database operation
+        console.error('Error adding car:', error);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
+module.exports = { addCarAdmin };
+
   module.exports = {
       // ... other functions
       addCarAdmin,
