@@ -44,6 +44,11 @@ app.use('/otp',adminRout)
 app.use('/getOtp',adminRout)
 app.use('/generateOtp',adminRout)
 
+app.use('/adminCars',restrictToLoginAdminOnley,adminRout)
+app.use('/adminHome',restrictToLoginAdminOnley,adminRout)
+app.use('/addCars',restrictToLoginAdminOnley,adminRout)
+
+
 
 
 

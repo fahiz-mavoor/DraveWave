@@ -1,5 +1,6 @@
 
 const admin = require('../model/admin');
+// const car = require('../model/addCar');
 const  {setAdmin} =require('../service/auth');
 const session = require('express-session');
 const { v4: uuidv4 } = require('uuid');
@@ -86,7 +87,76 @@ async function handleAdminLogin(req, res) {
 };
 
 
+ function viewCarsAdmin(req,res){
+  res.status(200).render('admin/admindashbord/adminCar')
+}
+
+
+function viewHomeAdmin(req,res){
+  res.status(200).render('admin/index')
+}
+
   // sendAdminOtp();
+
+
+  const { addCars } = require('../model/addCar');
+
+  async function addCarAdmin(req, res) {
+      try {
+          const {
+              carName,
+              charCatogory,
+              year,
+              dayRent,
+              brandName,
+              carModal,
+              licencePlateNumber,
+              carImage,
+              colour,
+              fuelType,
+              TransmitionType,
+              milage,
+              insurenceDate,
+              feathers,
+              description
+          } = req.body;
+  
+          // Create a new car instance using the car model
+          const newCar = new addCars({
+              carName,
+              charCatogory,
+              year,
+              dayRent,
+              brandName,
+              carModal,
+              licencePlateNumber,
+              carImage,
+              colour,
+              fuelType,
+              TransmitionType,
+              milage,
+              insurenceDate,
+              feathers,
+              description
+          });
+  
+          // Save the new car to the database
+          await newCar.save();
+  
+          // Respond with a success message
+          res.status(201).render('admin/index')
+      } catch (error) {
+          // Handle any errors that might occur during the database operation
+          console.error('Error adding car:', error);
+          res.status(500).send('Internal Server Error');
+      }
+  }
+  
+  module.exports = {
+      // ... other functions
+      addCarAdmin,
+  };
+  
 
 
 module.exports = {
@@ -95,4 +165,8 @@ module.exports = {
   handleAdminLoginUseOtp,
   showOtpForm,
   generateAdminOtp,
+  viewCarsAdmin,
+  viewHomeAdmin,
+  addCarAdmin,
+  
 };
