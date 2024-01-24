@@ -470,8 +470,8 @@ body {
 	padding-left: 6px;
 }
 #content main .table-data .order table td img {
-	width: 36px;
-	height: 36px;
+	width: 56px;
+	height: 56px;
 	border-radius: 50%;
 	object-fit: cover;
 }
@@ -830,6 +830,122 @@ body {
 					</form>
                 </div>
 </div>
+
+               <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+					<form action="/addCars" method="post" enctype="multipart/form-data">
+
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Car</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                         <div class="input-group flex-nowrap mt-2">
+                            <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-car'></i></span>
+                            <input type="text" class="form-control" name="carName" placeholder="Car Name" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            
+                            </div>
+                             <div class="input-group flex-nowrap mt-3">
+                            <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-car'></i></span>
+                            <input type="text" class="form-control"  name="charCatogory"  placeholder="Car Catogory" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            
+                            </div>
+                              <div class="input-group flex-nowrap mt-3 ">
+                            <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-car'></i></span>
+                            <input type="text" class="form-control" placeholder="Year" name="year" aria-label="Username" aria-describedby="addon-wrapping">
+                            
+                             <span class="input-group-text ms-3" id="addon-wrapping"><i class='bx bxs-purchase-tag' ></i></span>
+                            <input type="text" class="form-control" name="dayRent" placeholder="Rent Per Day" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            
+                            </div>
+                             <div class="input-group flex-nowrap mt-3">
+                            <span class="input-group-text" id="addon-wrapping"></i></span>
+                            <input type="text" class="form-control" name="brandName" placeholder="Brand" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            
+                            </div>
+                              <div class="input-group flex-nowrap mt-3">
+                            <span class="input-group-text" id="addon-wrapping"></i></span>
+                            <input type="text" class="form-control" name="carModal" placeholder="Car Model" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            
+                            </div>
+                              <div class="input-group flex-nowrap mt-3">
+                            <span class="input-group-text" id="addon-wrapping"></i></span>
+                            <input type="text" class="form-control" name="licencePlateNumber" placeholder="Licence Plate number" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            
+                            </div>
+                             <div class="input-group flex-nowrap mt-3">
+                            <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-image-add' ></i></span>
+                            <input type="file" class="form-control" name="carImage" id="imageUpload"  aria-describedby="addon-wrapping" required>
+                            
+                            </div>
+                               <div class="input-group flex-nowrap mt-3">
+                            <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-paint-roll'></i></span>
+                            <input type="text" class="form-control" name="colour" placeholder="Colour" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            
+                            <select class="form-select ms-2" name="fuelType" id="inputGroupSelect02">
+                                <option selected>Fuel Type</option>
+                                <option value="Petrol">Petrol</option>
+                                <option value="Desel">Desel</option>
+                                <option value="Electric">Other</option>
+
+                            </select>
+                            <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                            </div>
+                            <div class="input-group flex-nowrap mt-3">
+                            {{!-- <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-image-add' ></i></span>
+                            <input type="file" class="form-control" id="imageUpload" accept="image/*" aria-describedby="addon-wrapping">
+                             --}}
+                             <select class="form-select  ms-2" name="TransmitionType" id="inputGroupSelect02" required>
+                                <option selected>Transmission Type</option>
+                                <option value="Manual">Manual</option>
+                                <option value="Automatic">Automatic</option>
+
+                            </select>
+                            <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                            </div>
+
+                                                          <div class="input-group flex-nowrap mt-3">
+                            <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-bookmarks'></i></span>
+                            <input type="text" class="form-control" name="milage" placeholder="Milage" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            
+                             <span class="input-group-text ms-2" id="addon-wrapping"><i class='bx bxs-bookmarks'></i></span>
+                            <input type="date" class="form-control" name="insurenceDate" placeholder="Insurence " aria-label="Username" aria-describedby="addon-wrapping"required>
+                            
+                            
+                            </div>
+
+                            <div class="input-group mt-3">
+                                <span class="input-group-text">Feathers</span>
+                                <textarea class="form-control" name="feathers" aria-label="With textarea" ></textarea>
+                            </div>
+                               <div class="input-group mt-3">
+                                <span class="input-group-text">Description</span>
+                                <textarea class="form-control" name="description" aria-label="With textarea" ></textarea>
+                            </div>
+                            
+
+                        
+
+
+						
+                        </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button type="submit"  class="btn btn-primary">Save changes</button>
+						</a>
+                    </div>
+                    </div>
+					</form>
+                </div>
+</div>
+
+
+
+
+
+
             </div>
 
 			<ul class="box-info">
@@ -864,11 +980,13 @@ body {
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
+					<div class="modal-dialog modal-dialog-centered">
+  
+					</div>
 					<table>
 						<thead>
 							<tr>
-								
-									<th>Car Name</th>
+								<th>Car Name</th>
 								<th>Car Model</th>
 								<th>Transmission</th>
 								<th>Year</th>
@@ -876,62 +994,76 @@ body {
 							</tr>
 						</thead>
 						<tbody>
-								{{#each data}}
+						
 
-							<tr>
-								 {{!-- <td>
-            <img src="data:image/png;base64,{{this.carImage.buffer.toString('base64')}}" alt="Car Image" width="100">
-          </td> --}}
-								<td>
+<tbody>
+    {{#each data}}
+        <tr data-bs-toggle="modal" data-bs-target="#viewCars"data-carid="{{this._id}}" onclick="handleRowClick(this)">
+            <td>
+                <img src="{{this.carImage}}">
+                <p>{{this.carName}}</p>
+            </td>
+            <td>{{this.carModal}}</td>
+            <td>{{this.TransmitionType}}</td>
+            <td>{{this.year}}</td>
+        </tr>
+    {{/each}}
+</tbody>
 
-									<p>{{this.carName}}</p>
-								</td>
-								<td>{{this.carModel}}</td>
-								<td>{{this.TransmitionType}}</td>
-								<td> {{this.year}}</td>
+<div class="modal fade" id="viewCars" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered  ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Content will be dynamically updated here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-							</tr>
-								{{/each}}
+
+{{!-- delete car  modal--}}
+{{!-- <div class="modal" id="deletecar" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{this._id}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Delete the car details</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+		<a href="delteCar">
+        <button type="submit" onclick="" class="btn btn-primary">Delete</button>
+
+		</a>
+      </div>
+    </div>
+  </div>
+</div> --}}
+
+
+
 
 						</tbody>
 					</table>
 				</div>
-				{{!-- <div class="todo">
-					<div class="head">
-						<h3>Todos</h3>
-						<i class='bx bx-plus' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<ul class="todo-list">
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-					</ul>
-				</div> --}}
+				
 			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
 	
-
+ 
 	<script >
 		const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
@@ -1009,6 +1141,54 @@ switchMode.addEventListener('change', function () {
 		document.body.classList.remove('dark');
 	}
 })
+
+
+function handleRowClick(row) {
+    const carId = row.getAttribute('data-carid'); // Make sure it matches your HTML attribute name
+
+    fetch(`/getCarDetails?carId=${encodeURIComponent(carId)}`)
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('exampleModalLabel').innerText = data.carId;
+            document.querySelector('#viewCars .modal-body').innerHTML = `
+                <img src="${data.carImage}" style="width:100px;">
+                <p>Name: ${data.carName}</p>
+                <p>Model: ${data.carModal}</p>
+                <p>Transmission Type: ${data.TransmitionType}</p>
+                <p>Year: ${data.year}</p>
+                <p>Category: ${data.charCatogory}</p>
+                <p>Day Rent: ${data.dayRent}</p>
+
+                <p>Brand Name: ${data.brandName}</p>
+                <p>Licence Plate Number: ${data.licencePlateNumber}</p>
+                <p>Colour: ${data.colour}</p>
+
+					<form id="deleteForm">
+						<input type="hidden" name="deleteCarId" value="${data._id}">
+						<button type="submit" onclick="deleteCar()">Delete</button>
+					</form>       
+					  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
+           					Edit Car
+          				  </button>     `;
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+    function deleteCar(carId) {
+        fetch('/deleteCar', {
+            method: 'DELETE',
+            body: new URLSearchParams(new FormData(document.getElementById('deleteForm')))
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response if needed
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+
+	
 	</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

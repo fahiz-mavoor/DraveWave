@@ -36,6 +36,8 @@ app.use(
   );
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static('uploads'));
+
 
 app.use('/',adminRout)
 app.use('/adminLogin',adminRout)
@@ -47,9 +49,12 @@ app.use('/adminLogin',restrictToLoginAdminOnley,adminRout)
 
 app.use('/adminCars',restrictToLoginAdminOnley,adminRout)
 app.use('/addCars',restrictToLoginAdminOnley,adminRout)
+app.use('/getCarDetails',adminRout)
+app.use('/deleteCar/:carId',restrictToLoginAdminOnley,adminRout)
 
 
 
+// app.delete('/deleteCar/:carId', deleteCarById);
 
 
 

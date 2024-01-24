@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require('uuid');
 const { addCars } = require('../model/addCar');
 const bcrypt =require('bcrypt') ;
 const { sendAdminOtp ,generateOtp } = require('../service/adminotpsms');
-const{upload ,uploadFile} = require('./fileUpload')
+const{upload ,uploadFile} = require('../service/fileUpload')
 const path =require('path')
 
 const emailOtps = {};
@@ -199,22 +199,16 @@ function viewHomeAdmin(req,res){
                 description
             });
             console.log('req.file:', req.file);
-
-            // Set the carImage property to the file path
             newCar.carImage = req.file.path;
-
-            // Save the new car to the database
             await newCar.save();
-
-            // Handle the success or failure of the file upload
             uploadFile(req, res);
+
+
         } else {
-            // Handle the case when req.file or req.file.path is undefined
             console.error('Error: File or file path is undefined');
             res.status(400).send('Bad Request');
         }
     } catch (error) {
-        // Handle any errors that might occur during the database operation
         console.error('Error adding car:', error);
         res.status(500).send('Internal Server Error');
     }
@@ -237,6 +231,24 @@ module.exports = { addCarAdmin };
   }
   
 
+ async function carDetailsAdmin(req,res ){
+  try {
+    const carId = req.query.carId;
+
+    // Fetch the car details from MongoDB based on the carId
+    const carDetails = await addCars.findById(carId);
+
+    if (!carDetails) {
+        return res.status(404).json({ error: 'Car not found' });
+    }
+
+    res.json(carDetails);
+} catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+}
+ } 
+
 
 module.exports = {
   showLoginForm,
@@ -247,6 +259,7 @@ module.exports = {
   viewCarsAdmin,
   viewHomeAdmin,
   addCarAdmin,
-  readAdminDashbord
+  readAdminDashbord,
+  carDetailsAdmin,
   
 };
