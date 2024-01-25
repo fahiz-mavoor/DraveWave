@@ -51,6 +51,7 @@ app.use('/adminCars',restrictToLoginAdminOnley,adminRout)
 app.use('/addCars',restrictToLoginAdminOnley,adminRout)
 app.use('/getCarDetails',adminRout)
 app.use('/deleteCar/:carId',restrictToLoginAdminOnley,adminRout)
+app.use('/updateCarDetails',restrictToLoginAdminOnley,adminRout)
 
 
 
