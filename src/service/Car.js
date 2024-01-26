@@ -23,26 +23,21 @@ async function editCarById(req, res) {
     try {
         const { editCarId, ...updateValues } = req.body;
 
-        // Check if editCarId is present
         if (!editCarId) {
             return res.status(400).json('Could not get car Id');
         }
 
-        // Check if updateValues contains any fields to update
         if (Object.keys(updateValues).length === 0) {
             return res.status(400).json('No fields to update');
         }
 
-        // Use findByIdAndUpdate to update the document based on its ID
         const result = await addCars.findByIdAndUpdate(editCarId, { $set: updateValues }, { new: true });
 
-        // Check if the document was found and updated
         if (!result) {
             return res.status(404).json('Car not found');
         }
 
-        // Send the updated document or a success message
-        res.json(result);
+        res.status(200).redirect('/adminCars');
     } catch (error) {
         console.error("Server Error:", error);
         res.status(500).send('Server Error: ' + error.message);

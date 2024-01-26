@@ -365,6 +365,7 @@ body {
 	align-items: center;
 	grid-gap: 10px;
 	font-weight: 500;
+	border: 0px;
 }
 
 
@@ -471,9 +472,9 @@ body {
 	padding-left: 6px;
 }
 #content main .table-data .order table td img {
-	width: 56px;
+	width: 66px;
 	height: 56px;
-	border-radius: 50%;
+	border-radius: 10%;
 	object-fit: cover;
 }
 #content main .table-data .order table tbody tr:hover {
@@ -600,6 +601,11 @@ body {
 	#content main .table-data .todo .todo-list {
 		min-width: 420px;
 	}
+	#carView{
+		width: 300px;
+		height: 300px;
+	}
+
 }
 </style>
 	<title>AdminHub</title>
@@ -675,7 +681,22 @@ body {
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
+			<div class="btn-group">
+				
+
+			<a class="nav-link btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">SUVs</a></li>
+    <li><a class="dropdown-item" href="#"> Sedan</a></li>
+    <li><a class="dropdown-item" href="#">MUV</a></li>
+    <li><a class="dropdown-item" href="#">Convertibles</a></li>
+    <li><a class="dropdown-item" href="#">MHatchbacks</a></li>
+    <li><a class="dropdown-item" href="#">Electric</a></li>
+
+  </ul>
+               </div>
+
+			
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
@@ -717,16 +738,17 @@ body {
                 <!-- Button trigger modal -->
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn-download" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Add car
             </button>
 
 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal fade   " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="max-width: 800px; margin-left:370px;color:#3C91E6 ;background-color: #949596b3;"> 
 					<form id="carModalForm" action="/addCars" method="post" enctype="multipart/form-data">
+               
 
-                    <div class="modal-content">
+                    <div class="modal-content" style="color:#3C91E6 ;background-color: #3c91e605;" >
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Add Car</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -832,10 +854,10 @@ body {
                 </div>
 </div>
 
-               <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editCarModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+               <div  class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editCarModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="color:#3C91E6 ;background-color: #949596b3;"> 
 
-                    <div class="modal-content">
+                    <div class="modal-content" style="color:#3C91E6 ;background-color: #949596b3;" >
                     <div class="modal-header">
                         <h5 class="modal-title" id="editCarModalLabel">Add Car</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -991,8 +1013,8 @@ body {
   
 					</div>
 					<table>
-						<thead>
-							<tr>
+						<thead style="" >
+							<tr style="color: #3C91E6;font-size:x-large;border-bottom"><th></th>
 								<th>Car Name</th>
 								<th>Car Model</th>
 								<th>Transmission</th>
@@ -1000,15 +1022,18 @@ body {
 
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="order" style="">
 						
 
 <tbody>
     {{#each data}}
-        <tr data-bs-toggle="modal" data-bs-target="#viewCars"data-carid="{{this._id}}" onclick="handleRowClick(this)">
-            <td>
+        <tr style="border-bottom-width: 1px;border-color:#3C91E6" data-bs-toggle="modal" data-bs-target="#viewCars"data-carid="{{this._id}}" onclick="handleRowClick(this)">
+			<td>
                 <img src="{{this.carImage}}">
-                <p>{{this.carName}}</p>
+
+			</td>
+            <td>
+            {{this.carName}}
             </td>
             <td>{{this.carModal}}</td>
             <td>{{this.TransmitionType}}</td>
@@ -1018,8 +1043,10 @@ body {
 </tbody>
 
 <div class="modal fade" id="viewCars" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered  ">
-    <div class="modal-content">
+  <div class="modal-dialog modal-dialog-centered  " style="max-width: 800px; margin-left:370px;">
+   
+
+                    <div class="modal-content" style="color:#3C91E6 ;background-color: #3c91e605;" >
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -1160,25 +1187,42 @@ function handleRowClick(row) {
         .then(data => {
             document.getElementById('exampleModalLabel').innerText = data.carId;
             document.querySelector('#viewCars .modal-body').innerHTML = `
-                <img src="${data.carImage}" style="width:100px;">
-                <p>Name: ${data.carName}</p>
-                <p>Model: ${data.carModal}</p>
-                <p>Transmission Type: ${data.TransmitionType}</p>
-                <p>Year: ${data.year}</p>
-                <p>Category: ${data.charCatogory}</p>
-                <p>Day Rent: ${data.dayRent}</p>
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="${data.carImage}" class="img-fluid rounded-start  col-12 mt-4 " style="height:325px" alt="Car Image">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">${data.carName}</h5>
+       <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Model: ${data.carModal}</li>
+                    <li class="list-group-item">Transmission Type: ${data.TransmitionType}</li>
+                    <li class="list-group-item">Year: ${data.year}</li>
+                    <li class="list-group-item">Category: ${data.charCatogory}</li>
+                    <li class="list-group-item">Day Rent: ${data.dayRent}</li>
+                    <li class="list-group-item">Brand Name: ${data.brandName}</li>
+                    <li class="list-group-item">Licence Plate Number: ${data.licencePlateNumber}</li>
+                    <li class="list-group-item">Colour: ${data.colour}</li>
+                </ul> 
+				<div class="card-footer d-flex justify-content-center">
+                    <form id="deleteForm">
+                        <input type="hidden" name="deleteCarId" value="${data._id}">
+                        <button type="submit" class="btn btn-danger me-4 mt-4" onclick="deleteCar()">Delete</button>
+                    </form>
+                    <button type="button" class="btn btn-primary  mt-4" data-bs-toggle="modal" data-bs-target="#editCar" data-carEId="${data._id}" onclick="handleEditClick(this)">Edit</button>
+                </div>
+    </div>
+    </div>
+  </div>
 
-                <p>Brand Name: ${data.brandName}</p>
-                <p>Licence Plate Number: ${data.licencePlateNumber}</p>
-                <p>Colour: ${data.colour}</p>
+    
+            
+                
+                
 
-					<form id="deleteForm">
-						<input type="hidden" name="deleteCarId" value="${data._id}">
-						<button type="submit" onclick="deleteCar()">Delete</button>
-					</form>       
-<button data-bs-toggle="modal" data-bs-target="#editCar" data-carEId="${data._id}" onclick="handleEditClick(this)">Edit</button>
-    Edit
-</button>
+   
+
+
 
     `;
         })
