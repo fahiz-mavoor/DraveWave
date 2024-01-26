@@ -756,97 +756,112 @@ body {
                     <div class="modal-body">
                          <div class="input-group flex-nowrap mt-2">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-car'></i></span>
-                            <input type="text" class="form-control" name="carName" placeholder="Car Name" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            <input type="text" class="form-control" id="carName" name="carName" placeholder="Car Name" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             </div>
-                             <div class="input-group flex-nowrap mt-3">
+                            <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-car'></i></span>
-                            <input type="text" class="form-control"  name="charCatogory"  placeholder="Car Catogory" aria-label="Username" aria-describedby="addon-wrapping" required>
-                            
-                            </div>
+							<select class="form-select ms-2"  name="charCatogory" id="charCatogory">
+                                <option selected> Car Catogory</option>
+                                <option value="SUVs">SUVs</option>
+                                <option value="MUVs">MUVs</option>
+                                <option value="Sedan">Sedan</option>
+                                <option value="Convertibles">Convertibles</option>
+                                <option value="MHatchbacks">MHatchbacks</option>
+                                <option value="Electric">Electric</option>
+
+
+                            </select>
+							</div>
                               <div class="input-group flex-nowrap mt-3 ">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-car'></i></span>
-                            <input type="text" class="form-control" placeholder="Year" name="year" aria-label="Username" aria-describedby="addon-wrapping">
+                            <input type="number" class="form-control" placeholder="Year" id="year" name="year" aria-label="Username" aria-describedby="addon-wrapping">
                             
                              <span class="input-group-text ms-3" id="addon-wrapping"><i class='bx bxs-purchase-tag' ></i></span>
-                            <input type="text" class="form-control" name="dayRent" placeholder="Rent Per Day" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            <input type="number" class="form-control" id="dayRent" name="dayRent" placeholder="Rent Per Day" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             </div>
                              <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"></i></span>
-                            <input type="text" class="form-control" name="brandName" placeholder="Brand" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            <input type="text" class="form-control" id="brandName" name="brandName" placeholder="Brand" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             </div>
                               <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"></i></span>
-                            <input type="text" class="form-control" name="carModal" placeholder="Car Model" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            <input type="text" class="form-control" id="carModal" name="carModal" placeholder="Car Model" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             </div>
                               <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"></i></span>
-                            <input type="text" class="form-control" name="licencePlateNumber" placeholder="Licence Plate number" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            <input type="text" class="form-control" id="licencePlateNumber" name="licencePlateNumber" placeholder="Licence Plate number" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             </div>
                              <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-image-add' ></i></span>
-                            <input type="file" class="form-control" name="carImage" id="imageUpload"  aria-describedby="addon-wrapping" required>
+                            <input type="file" class="form-control" id="carImage" name="carImage" id="imageUpload"  aria-describedby="addon-wrapping" required>
                             
                             </div>
                                <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-paint-roll'></i></span>
-                            <input type="text" class="form-control" name="colour" placeholder="Colour" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            <input type="text" class="form-control" id="colour" name="colour" placeholder="Colour" aria-label="Username" aria-describedby="addon-wrapping" required>
+                               </div>
+							   <div class="input-group flex-nowrap mt-3">
+                           
+						    <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-gas-pump' ></i></span>
                             
-                            <select class="form-select ms-2" name="fuelType" id="inputGroupSelect02">
+                            <select class="form-select ms-2"  name="fuelType" id="fuelType">
                                 <option selected>Fuel Type</option>
                                 <option value="Petrol">Petrol</option>
                                 <option value="Desel">Desel</option>
                                 <option value="Electric">Other</option>
 
                             </select>
-                            <label class="input-group-text" for="inputGroupSelect02">Options</label>
+
+                            <label class="input-group-text" for="fuelType">Options</label>
+
                             </div>
                             <div class="input-group flex-nowrap mt-3">
-                            {{!-- <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-image-add' ></i></span>
-                            <input type="file" class="form-control" id="imageUpload" accept="image/*" aria-describedby="addon-wrapping">
-                             --}}
-                             <select class="form-select  ms-2" name="TransmitionType" id="inputGroupSelect02" required>
+                           
+						    <span class="input-group-text" id="addon-wrapping"><i class='bx bx-cog' ></i></span>
+
+                             <select class="form-select  ms-2" name="TransmitionType" id="TransmitionType" required>
                                 <option selected>Transmission Type</option>
                                 <option value="Manual">Manual</option>
                                 <option value="Automatic">Automatic</option>
 
                             </select>
-                            <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                            <label class="input-group-text" for="TransmitionType">Options</label>
                             </div>
 
-                                                          <div class="input-group flex-nowrap mt-3">
+                            <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-bookmarks'></i></span>
-                            <input type="text" class="form-control" name="milage" placeholder="Milage" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            <input type="number"   class="form-control" id="milage" name="milage" placeholder="Milage" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                              <span class="input-group-text ms-2" id="addon-wrapping"><i class='bx bxs-bookmarks'></i></span>
-                            <input type="date" class="form-control" name="insurenceDate" placeholder="Insurence " aria-label="Username" aria-describedby="addon-wrapping"required>
+                            <input type="date" class="form-control" id="insurenceDate" name="insurenceDate" placeholder="Insurence " aria-label="Username" aria-describedby="addon-wrapping"required>
                             
                             
                             </div>
 
                             <div class="input-group mt-3">
                                 <span class="input-group-text">Feathers</span>
-                                <textarea class="form-control" name="feathers" aria-label="With textarea" ></textarea>
+                                <textarea class="form-control" id="feathers" name="feathers" aria-label="With textarea" ></textarea>
                             </div>
                                <div class="input-group mt-3">
                                 <span class="input-group-text">Description</span>
-                                <textarea class="form-control" name="description" aria-label="With textarea" ></textarea>
+                                <textarea class="form-control" id="description" name="description" aria-label="With textarea" ></textarea>
                             </div>
                             
 
                         
 
 
-						
+						<p style="color: #DB504A;" id="errorMessage" name="errorMessage"></p>
                         </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<button type="submit"  class="btn btn-primary">Save changes</button>
+						<button type="submit"   class="btn btn-primary">Save changes</button>
 						</a>
                     </div>
                     </div>
@@ -868,35 +883,44 @@ body {
 
                          <div class="input-group flex-nowrap mt-2">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-car'></i></span>
-                            <input type="text" class="form-control" value="" name="carName" placeholder="Car Name" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            <input type="text" class="form-control" id="carName" name="carName" placeholder="Car Name" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             </div>
                              <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-car'></i></span>
-                            <input type="text" class="form-control"  name="charCatogory"  placeholder="Car Catogory" aria-label="Username" aria-describedby="addon-wrapping" required>
-                            
-                            </div>
+							<select class="form-select ms-2"  name="charCatogory" id="charCatogory">
+                                <option selected> Car Catogory</option>
+                                <option value="SUVs">SUVs</option>
+                                <option value="MUVs">MUVs</option>
+                                <option value="Sedan">Sedan</option>
+                                <option value="Convertibles">Convertibles</option>
+                                <option value="MHatchbacks">MHatchbacks</option>
+                                <option value="Electric">Electric</option>
+
+
+                            </select>
+							</div>
                               <div class="input-group flex-nowrap mt-3 ">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-car'></i></span>
-                            <input type="text" class="form-control" placeholder="Year" name="year" aria-label="Username" aria-describedby="addon-wrapping">
+                            <input type="number" class="form-control" placeholder="Year" id="year" name="year" aria-label="Username" aria-describedby="addon-wrapping">
                             
                              <span class="input-group-text ms-3" id="addon-wrapping"><i class='bx bxs-purchase-tag' ></i></span>
-                            <input type="text" class="form-control" name="dayRent" placeholder="Rent Per Day" aria-label="Username" aria-describedby="addon-wrapping" required>
-                            
-                            </div>
-                             <div class="input-group flex-nowrap mt-3">
-                            <span class="input-group-text" id="addon-wrapping"></i></span>
-                            <input type="text" class="form-control" name="brandName" placeholder="Brand" aria-label="Username" aria-describedby="addon-wrapping" required>
-                            
-                            </div>
-                              <div class="input-group flex-nowrap mt-3">
-                            <span class="input-group-text"  id="addon-wrapping"></i></span>
-                            <input type="text" class="form-control"  name="carModal" placeholder="Car Model" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            <input type="number" class="form-control" id="dayRent" name="dayRent" placeholder="Rent Per Day" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             </div>
                               <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"></i></span>
-                            <input type="text" class="form-control" name="licencePlateNumber" placeholder="Licence Plate number" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            <input type="text" class="form-control" id="brandName" name="brandName" placeholder="Brand" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            
+                            </div>
+                               <div class="input-group flex-nowrap mt-3">
+                            <span class="input-group-text" id="addon-wrapping"></i></span>
+                            <input type="text" class="form-control" id="carModal" name="carModal" placeholder="Car Model" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            
+                            </div>
+                                <div class="input-group flex-nowrap mt-3">
+                            <span class="input-group-text" id="addon-wrapping"></i></span>
+                            <input type="text" class="form-control" id="licencePlateNumber" name="licencePlateNumber" placeholder="Licence Plate number" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                             </div>
                              <div class="input-group flex-nowrap mt-3">
@@ -906,51 +930,53 @@ body {
                             </div>
                                <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-paint-roll'></i></span>
-                            <input type="text" class="form-control" name="colour" placeholder="Colour" aria-label="Username" aria-describedby="addon-wrapping" required>
-                            
-                            <select class="form-select ms-2" name="fuelType" id="inputGroupSelect02">
+                            <input type="text" class="form-control" id="colour" name="colour" placeholder="Colour" aria-label="Username" aria-describedby="addon-wrapping" required>
+						    
+							<span class="input-group-text ms-2" id="addon-wrapping"><i class='bx bxs-gas-pump' ></i></span>
+                        
+                            <select class="form-select ms-0" id="fuelType" name="fuelType" id="fuelType">
                                 <option selected>Fuel Type</option>
                                 <option value="Petrol">Petrol</option>
                                 <option value="Desel">Desel</option>
                                 <option value="Electric">Other</option>
 
                             </select>
-                            <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                            <label class="input-group-text" for="fuelType">Options</label>
                             </div>
                             <div class="input-group flex-nowrap mt-3">
-                            {{!-- <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-image-add' ></i></span>
-                            <input type="file" class="form-control" id="imageUpload" accept="image/*" aria-describedby="addon-wrapping">
-                             --}}
-                             <select class="form-select  ms-2" name="TransmitionType" id="inputGroupSelect02" required>
+                           
+						    <span class="input-group-text" id="addon-wrapping"><i class='bx bx-cog' ></i></span>
+
+                             <select class="form-select  ms-2" name="TransmitionType" id="TransmitionType" required>
                                 <option selected>Transmission Type</option>
                                 <option value="Manual">Manual</option>
                                 <option value="Automatic">Automatic</option>
 
                             </select>
-                            <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                            <label class="input-group-text" for="TransmitionType">Options</label>
                             </div>
 
-                                                          <div class="input-group flex-nowrap mt-3">
+                            <div class="input-group flex-nowrap mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class='bx bxs-bookmarks'></i></span>
-                            <input type="text" class="form-control" name="milage" placeholder="Milage" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            <input type="text" class="form-control" id="milage" name="milage" placeholder="Milage" aria-label="Username" aria-describedby="addon-wrapping" required>
                             
                              <span class="input-group-text ms-2" id="addon-wrapping"><i class='bx bxs-bookmarks'></i></span>
-                            <input type="date" class="form-control" name="insurenceDate" placeholder="Insurence " aria-label="Username" aria-describedby="addon-wrapping"required>
+                            <input type="date" class="form-control" id="insurenceDate" name="insurenceDate" placeholder="Insurence " aria-label="Username" aria-describedby="addon-wrapping"required>
                             
                             
                             </div>
 
                             <div class="input-group mt-3">
                                 <span class="input-group-text">Feathers</span>
-                                <textarea class="form-control" name="feathers" aria-label="With textarea" ></textarea>
+                                <textarea class="form-control" id="feathers" name="feathers" aria-label="With textarea" ></textarea>
                             </div>
                                <div class="input-group mt-3">
                                 <span class="input-group-text">Description</span>
-                                <textarea class="form-control" name="description" aria-label="With textarea" ></textarea>
+                                <textarea class="form-control" id="description" name="description" aria-label="With textarea" ></textarea>
                             </div>
 							<div>
                             <input type="hidden" name="editCarId" >
-						<button type="submit"  class="btn btn-primary">Update changes</button>
+						<button type="submit"  class="btn btn-primary mt-3">Update changes</button>
                                 
 							</div>
 					</form>
@@ -963,7 +989,7 @@ body {
                         </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
 						</a>
                     </div>
                     </div>
@@ -1099,6 +1125,43 @@ body {
 	
  
 	<script >
+
+function validation (){
+	const carName = document.getElementById('carName').value
+	const charCatogory = document.getElementById('charCatogory').value
+	const year=document.getElementById('year').value
+	const dayRent = document.getElementById('dayRent').value
+	const brandName = document.getElementById('brandName').value
+	const carModal = document.getElementById('carModal').value
+	const licencePlateNumber = document.getElementById('licencePlateNumber').value
+	const carImage = document.getElementById('carImage').value
+	const colour = document.getElementById('colour').value
+	const fuelType = document.getElementById('fuelType').value
+	const TransmitionType = document.getElementById('TransmitionType').value
+	const milage = document.getElementById('milage').value
+	const insurenceDate = document.getElementById('insurenceDate').value
+	const feathers = document.getElementById('feathers').value
+	const description = document.getElementById('description').value
+	const error = document.getElementById('errorMessage')
+     if('/^[a-zA-Z0-9\s\-]+$/'.test(carName)){
+		error.innerHTML=""
+	 }
+	 else{
+        error.innerHTML="enter Vakid Carname"
+		return false
+	 }
+	  if('/^[a-zA-Z0-9\s\-]+$/'.test()){
+		error.innerHTML=""
+	 }
+	 else{
+        error.innerHTML="enter Vakid Carname"
+		return false
+	 }
+
+return true
+}
+
+
 		const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
 allSideMenu.forEach(item=> {
@@ -1189,7 +1252,7 @@ function handleRowClick(row) {
             document.querySelector('#viewCars .modal-body').innerHTML = `
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="${data.carImage}" class="img-fluid rounded-start  col-12 mt-4 " style="height:325px" alt="Car Image">
+      <img src="${data.carImage}" class="img-fluid rounded-start  col-12 mt-4 " style="height:325px;overflow: hidden" alt="Car Image">
     </div>
     <div class="col-md-8">
       <div class="card-body">

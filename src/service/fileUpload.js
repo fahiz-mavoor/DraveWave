@@ -1,5 +1,7 @@
 const multer  = require('multer')
 const path = require('path')
+const fs =require('fs');
+const { error } = require('console');
 // const upload = multer({ dest: 'uploads/' })
 
 
@@ -34,8 +36,20 @@ const uploadFile = (req, res) => {
     }
     // You can add additional logic here if needed
 }
+ 
+ function deleateFile(filePath){
+    fs.unlink(filePath,(error)=>{
+        if(error){
+       console.log(`file is not removed ${error}`);
 
-module.exports = { upload, uploadFile };
+        }else{
+       console.log(`file is removed ${filePath}`);
+       return true
+        }
+    })
+
+ }
+module.exports = { upload, uploadFile,deleateFile };
 
 
 // module.exports={upload}
