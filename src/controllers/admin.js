@@ -294,6 +294,39 @@ module.exports = { addCarAdmin };
  } 
 
 
+ async function alphabeticallySort(req,res){
+  try{
+    
+  //   const carAlphbet = await addCars.find().sort({carName:1})
+  // const carCount = await countCars()
+  // const category = req.query.category;
+  
+  // const car = await addCars.find({charCatogory:category})
+  
+  // res.status(200).render('admin/admindashbord/adminCar',{data:carAlphbet,count:carCount,category:category})
+  const category = req.query.Category;
+  if(!category){
+    const carAlphbet = await addCars.find().sort({carName:1})
+  const carCount = await countCars()
+    res.status(200).render('admin/admindashbord/adminCar',{data:carAlphbet,count:carCount})
+  }else{
+    const carAlphbet = await addCars.find({charCatogory:category}).sort({carName:1})
+  const carCount = await categorycountCars(category)
+
+      res.status(200).render('admin/admindashbord/adminCar',{data:carAlphbet,count:carCount,category:category})
+
+  }
+
+  }catch(error){
+   
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+
+
+ }
+
+
 module.exports = {
   showLoginForm,
   handleAdminLogin,
@@ -306,5 +339,6 @@ module.exports = {
   readAdminDashbord,
   carDetailsAdmin,
   getCarAdminCategory,
+  alphabeticallySort
   
 };

@@ -1037,7 +1037,7 @@ body {
 						{{# if category}}
 						<p>Totel {{category}} </p>
 						  {{else }}
-                        <p>Totel Cas</p>
+                        <p>Totel Cars</p>
 						{{/if}}
 					</span>
 				</li>
@@ -1062,8 +1062,28 @@ body {
 				<div class="order">
 					<div class="head">
 						<h3>Recent Orders</h3>
+						  <a class="btn-download" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
 						<i class='bx bx-search' ></i>
+						  </a>
+						  <div class="collapse" id="collapseExample">
+                          <div class="card card-body p-0">
+                          <input type="text" class="form-control m-0" id="insurenceDate" placeholder="Search" name="insurenceDate"  aria-label="Username" >
+
+                          
+                      </div>
+                        </div>
+						<div class="dropdown">
+  <a style="border: 0;" class="btn-download" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 						<i class='bx bx-filter' ></i>
+    
+  </a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/alphabeticallySort?Category={{category}}">Alphabetically</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
+
 					</div>
 					<div class="modal-dialog modal-dialog-centered">
   
@@ -1282,7 +1302,7 @@ function handleRowClick(row) {
             document.querySelector('#viewCars .modal-body').innerHTML = `
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="${data.carImage}" class="img-fluid rounded-start  col-12 mt-4 " style="height:325px;overflow: hidden" alt="Car Image">
+      <img src="${data.carImage}" class="img-fluid rounded-start  col-12 mt-4 " style="height:325px; alt="Car Image">
     </div>
     <div class="col-md-8">
       <div class="card-body">
