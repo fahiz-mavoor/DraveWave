@@ -1,5 +1,6 @@
 const { addCars } = require('../model/addCar');
 const {deleateFile} = require('../service/fileUpload')
+const {uploadFile} = require('./fileUpload')
 
 // async function deleteCarById(req,res){
 //     try{
@@ -44,7 +45,7 @@ async function deleteCarById(req, res) {
                 return res.status(404).json('Car not found');
             }
 
-            const filePath = car.carImage; // Assuming carImage is the property containing the file path
+            const filePath = car.carImage; 
 
             const deleteImage = deleateFile(filePath);
 
@@ -61,6 +62,39 @@ async function deleteCarById(req, res) {
     }
 }
 
+// async function editCarById(req, res) {
+//     try {
+//         const { editCarId, ...updateValues } = req.body;
+
+//         if (!editCarId) {
+//             return res.status(400).json('Could not get car Id');
+//         }
+
+//         if (Object.keys(updateValues).length === 0) {
+//             return res.status(400).json('No fields to update');
+//         }
+//         const car = await addCars.findById(editCarId).exec();
+//         console.log(car.carImage);
+
+
+
+//         const result = await addCars.findByIdAndUpdate(editCarId, { $set: updateValues }, { new: true });
+         
+//         if (!result) {
+//             return res.status(404).json('Car not found');
+//         }
+//         console.log('req.file:', req.file);
+//             addCars.carImage = req.file.path;
+//             await addCars.save();
+//             uploadFile(req, res);
+//         deleateFile(car.carImage)
+//         // res.status(200).redirect('/adminCars');
+//     } catch (error) {
+//         console.error("Server Error:", error);
+//         res.status(500).send('Server Error: ' + error.message);
+//     }
+// }
+
 async function editCarById(req, res) {
     try {
         const { editCarId, ...updateValues } = req.body;
@@ -73,13 +107,30 @@ async function editCarById(req, res) {
             return res.status(400).json('No fields to update');
         }
 
-        const result = await addCars.findByIdAndUpdate(editCarId, { $set: updateValues }, { new: true });
+        // Find the car by ID
+        const car = await addCars.findById(editCarId).exec();
 
-        if (!result) {
+        if (!car) {
             return res.status(404).json('Car not found');
         }
 
-        res.status(200).redirect('/adminCars');
+        // Update car details
+        const updatedCar = await addCars.findByIdAndUpdate(editCarId, { $set: updateValues }, { new: true });
+
+        // Handle file upload
+        if (req.file) {
+            // Delete the old file
+            deleateFile(car.carImage);
+
+            // Update the carImage property in the database
+            updatedCar.carImage = req.file.path;
+            await updatedCar.save();
+
+            // Upload the new file
+            uploadFile(req, res);
+        }
+
+        // Redirect or respond as needed
     } catch (error) {
         console.error("Server Error:", error);
         res.status(500).send('Server Error: ' + error.message);
