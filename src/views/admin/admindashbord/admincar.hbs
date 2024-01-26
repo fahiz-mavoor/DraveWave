@@ -686,12 +686,38 @@ body {
 
 			<a class="nav-link btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">SUVs</a></li>
-    <li><a class="dropdown-item" href="#"> Sedan</a></li>
-    <li><a class="dropdown-item" href="#">MUV</a></li>
-    <li><a class="dropdown-item" href="#">Convertibles</a></li>
-    <li><a class="dropdown-item" href="#">MHatchbacks</a></li>
-    <li><a class="dropdown-item" href="#">Electric</a></li>
+    {{!-- <li><a class="btn btn-link" href="/getCarAdmin/SUVs">SUVs</a></li>
+
+    <li><a class="dropdown-item" href="/getCarAdmin">MUV</a></li>
+    <li><a class="dropdown-item" href="/getCarAdmin">Convertibles</a></li>
+    <li><a class="dropdown-item" href="/getCarAdmin">MHatchbacks</a></li>
+    <li><a class="dropdown-item" href="/getCarAdmin/Electric">Electric</a></li> --}}
+
+<form action="/getCarAdmin" method="get">
+    <input type="hidden" name="category" value="SUVs">
+    <button type="submit" style="border: 0;background-color:#fbfbfd00;width:100% ;padding:3px">SUVs</button>
+</form>
+<form action="/getCarAdmin" method="get">
+    <input type="hidden" name="category" value="MUVs">
+    <button type="submit" style="border: 0;background-color:#fbfbfd00;width:100% ;padding:3px">MUVs</button>
+</form><form action="/getCarAdmin" method="get">
+    <input type="hidden" name="category" value="Sedan">
+    <button type="submit" style="border: 0;background-color:#fbfbfd00;width:100% ;padding:3px">Sedan</button>
+</form><form action="/getCarAdmin" method="get">
+    <input type="hidden" name="category" value="Sports Car">
+    <button type="submit" style="border: 0;background-color:#fbfbfd00;width:100% ;padding:3px">Sports Car</button>
+</form><form action="/getCarAdmin" method="get">
+    <input type="hidden" name="category" value="Hatchbacks">
+    <button type="submit" style="border: 0;background-color:#fbfbfd00;width:100% ;padding:3px">Hatchbacks</button>
+</form><form action="/getCarAdmin" method="get">
+    <input type="hidden" name="category" value="Electric">
+    <button type="submit" style="border: 0;background-color:#fbfbfd00;width:100% ;padding:3px">Electric</button>
+</form><form action="/adminCars" method="get">
+
+    <button type="submit" style="border: 0;background-color:#fbfbfd00;width:100% ;padding:3px">All Cars</button>
+</form>
+
+
 
   </ul>
                </div>
@@ -766,8 +792,8 @@ body {
                                 <option value="SUVs">SUVs</option>
                                 <option value="MUVs">MUVs</option>
                                 <option value="Sedan">Sedan</option>
-                                <option value="Convertibles">Convertibles</option>
-                                <option value="MHatchbacks">MHatchbacks</option>
+                                <option value="Sports Car">Sports Car</option>
+                                <option value="Hatchbacks">Hatchbacks</option>
                                 <option value="Electric">Electric</option>
 
 
@@ -893,8 +919,8 @@ body {
                                 <option value="SUVs">SUVs</option>
                                 <option value="MUVs">MUVs</option>
                                 <option value="Sedan">Sedan</option>
-                                <option value="Convertibles">Convertibles</option>
-                                <option value="MHatchbacks">MHatchbacks</option>
+                                <option value="Sports Car">Sports Car</option>
+                                <option value="Hatchbacks">Hatchbacks</option>
                                 <option value="Electric">Electric</option>
 
 
@@ -1005,10 +1031,14 @@ body {
 
 			<ul class="box-info">
 				<li>
-					<i class='bx bxs-calendar-check' ></i>
+					<i class='bx bx-car'></i>
 					<span class="text">
-						<h3>1020</h3>
-						<p>New Order</p>
+						<h3>{{count}}</h3>
+						{{# if category}}
+						<p>Totel {{category}} </p>
+						  {{else }}
+                        <p>Totel Cas</p>
+						{{/if}}
 					</span>
 				</li>
 				<li>

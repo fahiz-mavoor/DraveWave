@@ -19,6 +19,7 @@ router.get('/getCarDetails',adminControler.carDetailsAdmin)
 // router.delete('/deleteCar',car.deleteCarById)
 router.delete('/deleteCar',car.deleteCarById);
 router.post('/updateCarDetails', upload.single('carImage'),car.editCarById)
+router.get('/getCarAdmin',adminControler.getCarAdminCategory)
 
 
 

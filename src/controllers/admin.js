@@ -8,7 +8,8 @@ const { addCars } = require('../model/addCar');
 const bcrypt =require('bcrypt') ;
 const { sendAdminOtp ,generateOtp } = require('../service/adminotpsms');
 const{upload ,uploadFile} = require('../service/fileUpload')
-const path =require('path')
+const path =require('path');
+const addCar = require('../model/addCar');
 
 const emailOtps = {};
 
@@ -92,8 +93,23 @@ async function handleAdminLogin(req, res) {
 
   async function viewCarsAdmin(req,res){
   const cars = await readAdminDashbord()
+  const carCount = await countCars()
 
-  res.status(200).render('admin/admindashbord/adminCar',{data:cars})
+
+  res.status(200).render('admin/admindashbord/adminCar',{data:cars,count:carCount})
+}
+
+
+
+async function countCars() {
+  try {
+    const carCount = await addCars.countDocuments();
+    // console.log(`Total number of cars: ${carCount}`);
+    return carCount;
+  } catch (error) {
+    // console.error('Error counting cars:', error);
+    return null;
+  }
 }
 
 
@@ -226,8 +242,36 @@ module.exports = { addCarAdmin };
     // console.log(cars);
     // res.send(cars)
     // const allDataArray = await cars.toArray();
-
+    
+      
     return cars
+    
+  }
+
+  async function getCarAdminCategory (req,res){
+    try{
+      const category = req.query.category;
+      const car = await addCars.find({charCatogory:category})
+  const carCount = await categorycountCars(category)
+
+  res.status(200).render('admin/admindashbord/adminCar',{data:car,count:carCount,category:category})
+      
+      
+    } catch(error){
+      console.error('Error adding car:', error);
+      res.status(500).send('Internal Server Error');
+    }    
+  }
+
+  async function categorycountCars(category) {
+    try {
+      const carCount = await addCars.countDocuments({charCatogory:category});
+      // console.log(`Total number of cars: ${carCount}`);
+      return carCount;
+    } catch (error) {
+      // console.error('Error counting cars:', error);
+      return null;
+    }
   }
   
 
@@ -261,5 +305,6 @@ module.exports = {
   addCarAdmin,
   readAdminDashbord,
   carDetailsAdmin,
+  getCarAdminCategory,
   
 };
