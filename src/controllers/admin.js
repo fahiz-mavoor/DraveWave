@@ -296,27 +296,42 @@ module.exports = { addCarAdmin };
 
  async function alphabeticallySort(req,res){
   try{
-    
-  //   const carAlphbet = await addCars.find().sort({carName:1})
-  // const carCount = await countCars()
-  // const category = req.query.category;
-  
-  // const car = await addCars.find({charCatogory:category})
-  
-  // res.status(200).render('admin/admindashbord/adminCar',{data:carAlphbet,count:carCount,category:category})
+   const  searchValue = req.query.search
+    // console.log(searchValue);
   const category = req.query.Category;
   if(!category){
+    if(searchValue === ''){
     const carAlphbet = await addCars.find().sort({carName:1})
-  const carCount = await countCars()
+    const carCount = await countCars()
     res.status(200).render('admin/admindashbord/adminCar',{data:carAlphbet,count:carCount})
+    }else{
+
+      const carAlphbet = await addCars.find({ carName: { $regex: new RegExp(searchValue, 'i') }}).sort({carName:1})
+      carCount = await addCars.countDocuments({carName:{$regex: new RegExp(searchValue,'i')}})
+      
+        res.status(200).render('admin/admindashbord/adminCar',{data:carAlphbet,count:carCount,search:searchValue})
+        console.log(carAlphbet);
+    
+
+    }
+    
   }else{
+    if(searchValue === ''){
+
     const carAlphbet = await addCars.find({charCatogory:category}).sort({carName:1})
   const carCount = await categorycountCars(category)
 
       res.status(200).render('admin/admindashbord/adminCar',{data:carAlphbet,count:carCount,category:category})
+    
+  }else{
+    const carAlphbet = await addCars.find({ carName: { $regex: new RegExp(searchValue, 'i') },charCatogory:category}).sort({carName:1})
+  const carCount = await addCars.countDocuments({ carName: { $regex: new RegExp(searchValue, 'i') },charCatogory:category},{}).sort({carName:1})
+// console.log(carAlphbet);
+      res.status(200).render('admin/admindashbord/adminCar',{data:carAlphbet,count:carCount,category:category,search:searchValue})
+    
 
   }
-
+  }
   }catch(error){
    
     console.error('Error:', error);
@@ -327,80 +342,21 @@ module.exports = { addCarAdmin };
  }
 
 
-//  async function searchByCarNameFilter(req, res) {
-//   try {
-//     const searchValue = req.query.search;
-//     const encodedCategory = req.query.category;
-//     const category = decodeURIComponent(encodedCategory);
-//      console.log(category);
-//     if (searchValue) {
-//       let car;
-
-//       if (!category) {
-//         car = await addCars.find({ carName: { $regex: new RegExp(searchValue, 'i') } });
-//       } else {
-//         car = await addCars.find({ charCatogory: category, carName: { $regex: new RegExp(searchValue, 'i') } });
-//       }
-
-//       const carCount = category ? await categorycountCars(category) : await countCars();
-
-//       res.status(200).render('admin/admindashbord/adminCar', { data: car, count: carCount, category: category });
-//     }
-//   } catch (error) {
-//     console.error('Error:', error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// }
-
-// async function searchByCarNameFilter(req, res) {
-//   try {
-//     const searchValue = req.query.search;
-//     const encodedCategory = req.query.category;
-//     const category = decodeURIComponent(encodedCategory);
-  
-
-//     if (searchValue) {
-//       let car;
-
-//       if (!category) {
-//         console.log(category);
-//         console.log(searchValue);
-//         car = await addCars.find({ carName: { $regex: new RegExp(searchValue, 'i') } });
-//         console.log(car);
-
-//       } else {
-//         console.log(category);
-//         console.log(searchValue);
-//         car = await addCars.find({ charCategory:category, carName: { $regex: new RegExp(searchValue, 'i') } });
-//         console.log(car);
-//       }
-
-//       const carCount = category ? await categorycountCars(category) : await countCars();
-
-//       res.status(200).render('admin/admindashbord/adminCar', { data: car, count: carCount, category: category });
-//     }
-//   } catch (error) {
-//     console.error('Error:', error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// }
-
 async function searchByCarNameFilter(req,res){
   try{
     const searchValue = req.query.search
     const encodedCategory = req.query.category;
         const category = decodeURIComponent(encodedCategory).trim();   
 if(category === '') {
-  console.log(searchValue);
         car = await addCars.find({ carName: { $regex: new RegExp(searchValue, 'i') } });
         carCount = await addCars.countDocuments({carName:{$regex: new RegExp(searchValue,'i')}})
-      res.status(200).render('admin/admindashbord/adminCar', { data: car,count:carCount });
-
+      res.status(200).render('admin/admindashbord/adminCar', { data: car,count:carCount,search:searchValue });
+  
 } 
 else{
   const  car = await addCars.find({ charCatogory:category, carName: { $regex: new RegExp(searchValue, 'i') } });
   const carCount =await addCars.countDocuments({ charCatogory:category, carName: { $regex: new RegExp(searchValue, 'i') } });
-      res.status(200).render('admin/admindashbord/adminCar', { data: car, count: carCount, category: category });
+      res.status(200).render('admin/admindashbord/adminCar', { data: car, count: carCount, category: category,search:searchValue });
 
 }  
   } catch(error){
