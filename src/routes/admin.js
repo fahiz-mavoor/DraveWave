@@ -21,6 +21,7 @@ router.delete('/deleteCar',car.deleteCarById);
 router.post('/updateCarDetails', upload.single('carImage'),car.editCarById)
 router.get('/getCarAdmin',adminControler.getCarAdminCategory)
 router.get('/alphabeticallySort',adminControler.alphabeticallySort)
+router.get('/searchByCarName',adminControler.searchByCarNameFilter)
 
 
 

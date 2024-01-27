@@ -1067,7 +1067,7 @@ body {
 						  </a>
 						  <div class="collapse" id="collapseExample">
                           <div class="card card-body p-0">
-                          <input type="text" class="form-control m-0" id="insurenceDate" placeholder="Search" name="insurenceDate"  aria-label="Username" >
+                          <input type="text" class="form-control m-0" id="searchByCarName" placeholder="Search" name="insurenceDate"  aria-label="Username" >
 
                           
                       </div>
@@ -1160,7 +1160,7 @@ body {
   </div>
 </div> --}}
 
-
+<input type="hidden" value="{{category}} " id="category">
 
 
 						</tbody>
@@ -1210,6 +1210,17 @@ function validation (){
 
 return true
 }
+document.getElementById('searchByCarName').addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+    const search = document.getElementById('searchByCarName').value;
+    const category = document.getElementById('category').value;
+
+    // Construct the URL and navigate to it
+
+window.location.href = '/searchByCarName?category=' + encodeURIComponent(category) + '&search=' + encodeURIComponent(search);  }
+});
+
+
 
 
 		const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
